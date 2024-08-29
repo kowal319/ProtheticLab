@@ -7,12 +7,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/orders")
+//@RequestMapping("/protheticLab")
 public class OrderController {
 
     private final OrderService orderService;
@@ -23,19 +24,25 @@ public class OrderController {
     }
 
     // 1. Render the order management page with the form and the list of orders
-    @GetMapping
+    @GetMapping("orders")
     public String listOrders(Model model) {
         List<OrderItem> orders = orderService.getAllOrders();
         model.addAttribute("orders", orders);
+        return "orders-list"; // Thymeleaf template name
+    }
+
+    @GetMapping("/addOrder")
+            public String addOrderForm(Model model) {
         model.addAttribute("order", new OrderItem()); // empty order object for the form
-        return "order-management"; // Thymeleaf template name
+        return "add-order";
     }
 
     // 2. Create a new order from the form submission
     @PostMapping
-    public String createOrder(@ModelAttribute OrderItem order) {
+    public String createOrder(@ModelAttribute OrderItem order, RedirectAttributes redirectAttributes) {
         orderService.createOrder(order);
-        return "redirect:/orders"; // Redirect back to the order list after creating
+        redirectAttributes.addFlashAttribute("successMessage", "Zamówienie złożone !");
+        return "redirect:/addOrder"; // Redirect back to the order list after creating
     }
 
 

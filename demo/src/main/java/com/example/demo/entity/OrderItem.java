@@ -30,4 +30,7 @@ public class OrderItem {
     @Column(name = "pickup_date")
     private LocalDate pickupDate;
 
+    @Column(name = "opening_hours") // New field for opening hours
+    private String openingHours;
+
 }
