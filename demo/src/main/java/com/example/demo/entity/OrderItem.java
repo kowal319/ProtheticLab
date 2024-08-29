@@ -5,17 +5,29 @@ package com.example.demo.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 @Entity
-@Table(name = "ORDERITEM")
+@Table(name = "order_item")
 public class OrderItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Auto-generated ID
     private Long id;
+
+    @Column(name = "name")
+    private String name;
+
+    @Column(name = "description")
     private String description;
+
+
+    @Column(name = "pickup_date")
+    private LocalDate pickupDate;
 
 }

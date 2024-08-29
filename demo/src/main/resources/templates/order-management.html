@@ -11,17 +11,27 @@
     <h1 class="text-center">Order Management</h1>
 
     <!-- Order Form -->
-<!--    <div class="row mb-4">-->
-<!--        <div class="col-md-6 mx-auto">-->
-<!--            <form action="#" th:action="@{/orders}" method="post">-->
-<!--                <div class="mb-3">-->
-<!--                    <label for="description" class="form-label">Order Description</label>-->
-<!--                    <input type="text" class="form-control" id="description" name="description" th:field="*{description}" placeholder="Enter order description" required>-->
-<!--                </div>-->
-<!--                <button type="submit" class="btn btn-primary">Add Order</button>-->
-<!--            </form>-->
-<!--        </div>-->
-<!--    </div>-->
+    <div class="row mb-4">
+        <div class="col-md-6 mx-auto">
+            <form th:action="@{/orders}" th:object="${order}" method="post">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Nazwa gabinetu</label>
+                    <input type="text" class="form-control" id="name" th:field="*{name}" placeholder="Enter order description" required>
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Opis</label>
+                    <input type="text" class="form-control" id="description" th:field="*{description}" placeholder="Enter order description" required>
+                </div>
+                <div class="mb-3">
+                    <label for="pickupDate" class="form-label">Data odbioru</label>
+                    <input type="date" class="form-control" id="pickupDate" name="pickupDate" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Add Order</button>
+            </form>
+        </div>
+    </div>
+
 
     <!-- Order List -->
     <div class="row">
@@ -30,15 +40,19 @@
             <table class="table table-bordered table-hover">
                 <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Description</th>
-                    <th>Actions</th>
+                    <th>Numer zamowienia</th>
+                    <th>Nazwa gabinetu</th>
+                    <th>Opis</th>
+                    <th>Data odbioru</th>
+                    <th>Operacje</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="order : ${orders}">
                     <td th:text="${order.id}"></td>
+                    <td th:text="${order.name}"></td>
                     <td th:text="${order.description}"></td>
+                    <td th:text="${order.pickupDate}"></td>
                     <td>
                         <!-- Delete Order Button -->
                         <form th:action="@{/orders/delete/{id}(id=${order.id})}" method="post">
