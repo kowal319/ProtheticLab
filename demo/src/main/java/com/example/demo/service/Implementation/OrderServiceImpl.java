@@ -1,6 +1,7 @@
 package com.example.demo.service.Implementation;
 
 import com.example.demo.entity.OrderItem;
+import com.example.demo.entity.User;
 import com.example.demo.repository.OrderRepository;
 import com.example.demo.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +47,5 @@ public class OrderServiceImpl implements OrderService {
     public void deleteOrder(Long id) {
         orderRepository.deleteById(id);
     }
-
 
 }

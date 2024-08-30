@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <title>User Profile</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+  <style>
+    </style>
+</head>
+
+
+<body>
+<br />
+
+<!-- User Details Card -->
+<div class="card-container">
+  <div class="card">
+    <div class="card-body">
+      <h5>User</h5>
+      <div class="user-details">
+        <p>Nazwa Gabinetu: <span th:text="${userDetails.name}"></span></p>
+        <p>Email: <span th:text="${userDetails.email}"></span></p>
+        <p>Adres: <span th:text="${userDetails.address}"></span></p>
+        <p>Godziny Otwarcia: <span th:text="${userDetails.openingHours}"></span></p>
+
+      </div>
+      <div class="user-details-btns">
+        <a th:href="@{profile/edit/{id}(id=${userDetails.id})}" class="btn btn-primary">Edytuj/Uzupełnij dane</a>
+<!--        <a href="#" class="btn btn-primary" th:href="@{/users/changePassword/{id}(id=${userDetails.id})}">Change Password</a>-->
+        <!--                <a th:href="@{/users/profile/userCardDetails}" class="btn btn-primary">Credit Card Details</a>-->
+
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Add your scripts and other body elements here -->
+
+</body>
+
+</html>

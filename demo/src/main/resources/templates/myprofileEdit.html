@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>Edit User</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+  <style>
+
+    </style>
+</head>
+
+<body>
+<h1>Tutaj zmienisz swoje dane i uzupełnisz profil</h1>
+<form th:action="@{/profile/edit/{id}(id=${user.id})}" method="post">
+  <div class="form-group">
+    <label for="name">Nazwa gabinetu</label>
+    <input type="text" class="form-control" id="name" name="name" required="required" th:value="${user.name}" />
+  </div>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="text" class="form-control" id="email" name="email" th:value="${user.email}" />
+  </div>
+  <div class="form-group">
+    <label for="address">Adres</label>
+    <input type="text" class="form-control" id="address" name="address" th:value="${user.address}" />
+  </div>
+  <div class="form-group">
+    <label for="openingHours">Godziny Otwarcia:</label>
+    <input type="text" class="form-control" id="openingHours" name="openingHours" th:value="${user.openingHours}" />
+  </div>
+
+  <button type="submit" class="btn btn-primary">Update</button>
+  <a th:href="@{/profile}" class="btn btn-secondary">Cancel</a>
+</form>
+</body>
+
+</html>

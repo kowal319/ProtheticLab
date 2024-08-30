@@ -97,4 +97,19 @@ public class UserServiceImpl implements UserService {
         return savedUser;
     }
 
+
+    @Override
+    public User updateUser(Long id, User updateUser){
+       Optional<User> optionalUser = userRepository.findById(id);
+       if (optionalUser.isPresent()){
+           User existingUser = optionalUser.get();
+           existingUser.setName(updateUser.getName());
+           existingUser.setEmail(updateUser.getEmail());
+           existingUser.setAddress(updateUser.getAddress());
+           existingUser.setOpeningHours(updateUser.getOpeningHours());
+return userRepository.save(existingUser);
+       }else {
+           return null;
+       }}
+
 }

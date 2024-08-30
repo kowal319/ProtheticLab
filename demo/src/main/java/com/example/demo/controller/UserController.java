@@ -8,6 +8,9 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -35,6 +38,19 @@ public class UserController {
         User currentUser = userService.findByName(loggedInUsername);
         model.addAttribute("userDetails", currentUser);
         return "myprofile";
+    }
+
+    @GetMapping("profile/edit/{id}")
+    public String myProfileEditForm(@PathVariable Long id, Model model){
+        User user = userService.findById(id);
+        model.addAttribute("user", user);
+        return "myprofileEdit";
+    }
+
+    @PostMapping("profile/edit/{id}")
+    public String myProfileEditSave(@PathVariable Long id, @ModelAttribute User updatedUser){
+     userService.updateUser(id, updatedUser);
+     return "redirect:/profile";
     }
 
 }
