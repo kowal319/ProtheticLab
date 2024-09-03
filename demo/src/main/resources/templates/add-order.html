@@ -17,7 +17,7 @@
     <!-- Order Form -->
     <div class="row mb-4">
         <div class="col-md-6 mx-auto">
-            <form th:action="@{/orders}" th:object="${order}" method="post">
+            <form th:action="@{/addOrder}" th:object="${order}" method="post">
                 <div class="mb-3">
                     <label for="name" class="form-label">Nazwa gabinetu</label>
                     <input type="text" class="form-control" id="name" th:field="*{name}" placeholder="Enter order description" required>
