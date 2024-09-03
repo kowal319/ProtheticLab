@@ -21,6 +21,8 @@
                     <th>Opis</th>
                     <th>Data odbioru</th>
                     <th>Godziny otwarcia</th>
+                    <th>Zlecono</th>
+
                     <th>Operacje</th>
                 </tr>
                 </thead>
@@ -31,6 +33,8 @@
                     <td th:text="${order.description}"></td>
                     <td th:text="${order.pickupDate}"></td>
                     <td th:text="${order.openingHours}"></td>
+                    <td th:text="${#temporals.format(order.created, 'yyyy-MM-dd HH:mm:ss')}"></td>
+
 
                     <td>
                         <!-- Delete Order Button -->

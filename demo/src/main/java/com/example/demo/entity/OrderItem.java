@@ -37,5 +37,12 @@ public class OrderItem {
     @Column(name = "opening_hours") // New field for opening hours
     private String openingHours;
 
+    @Column(name = "created")
+    private LocalDateTime created;
 
+
+    @PrePersist
+    protected void onCreate() {
+        this.created = LocalDateTime.now();
+    }
 }

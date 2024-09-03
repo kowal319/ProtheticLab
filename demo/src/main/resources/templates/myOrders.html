@@ -13,10 +13,13 @@
 
 <body>
 
+
 <!-- User Details Card -->
 <div class="container">
     <div class="card-container">
         <div class="card">
+            <a th:href="@{/profile}" class="btn btn-secondary">Moj profil</a>
+
             <h5>Order History</h5>
             <table class="table table-bordered table-striped">
                 <thead>
@@ -24,6 +27,8 @@
                     <th>Order ID</th>
                     <th>Opis</th>
                     <th>data odbioru</th>
+                    <th>zzlecono</th>
+
                     <th></th>
                 </tr>
                 </thead>
@@ -32,6 +37,8 @@
                     <td th:text="${order.id}"></td>
                     <td th:text="${order.description}"></td>
                     <td th:text="${order.pickupDate}"></td>
+                    <td th:text="${#temporals.format(order.created, 'yyyy-MM-dd HH:mm:ss')}"></td>
+
                 </tr>
                 </tbody>
             </table>
