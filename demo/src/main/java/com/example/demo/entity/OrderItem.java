@@ -20,6 +20,10 @@ public class OrderItem {
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Auto-generated ID
     private Long id;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User user;
+
     @Column(name = "name")
     private String name;
 
@@ -32,5 +36,6 @@ public class OrderItem {
 
     @Column(name = "opening_hours") // New field for opening hours
     private String openingHours;
+
 
 }

@@ -74,7 +74,7 @@ public class OrderController {
         orderService.createOrder(order);
         redirectAttributes.addFlashAttribute("successMessage", "Zamówienie złożone !");
 
-        return "redirect:/orders"; // Redirect to the same form or elsewhere
+        return "redirect:/profile/myOrders"; // Redirect to the same form or elsewhere
     }
 
 
@@ -103,5 +103,12 @@ public class OrderController {
     public String updateOrder(@PathVariable Long id, @ModelAttribute OrderItem updatedOrder) {
         orderService.updateOrder(id, updatedOrder);
         return "redirect:/orders"; // Redirect back to the order list after update
+    }
+
+    @GetMapping("profile/myOrders")
+    public String viewMyOrders(Model model, Authentication authentication) {
+        List<OrderItem> orders = orderService.findOrdersByCurrentUser(authentication);
+        model.addAttribute("orders", orders);
+        return "myOrders";
     }
 }

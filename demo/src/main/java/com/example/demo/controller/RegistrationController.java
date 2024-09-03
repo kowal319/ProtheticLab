@@ -50,5 +50,9 @@ public class RegistrationController {
         return "redirect:/addOrder"; // Redirect to the products page after successful login
     }
 
+
+
+
+
 }
 
