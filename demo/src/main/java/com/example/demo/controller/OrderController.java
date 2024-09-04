@@ -60,6 +60,8 @@ public class OrderController {
         // Prepopulate order fields with data from the current user's profile
         order.setName(currentUser.getName());
         order.setOpeningHours(currentUser.getOpeningHours());
+        order.setPhoneNumber(currentUser.getPhoneNumber());
+
         // You can prepopulate other fields if necessary
 
         // Add the order to the model
@@ -110,5 +112,13 @@ public class OrderController {
         List<OrderItem> orders = orderService.findOrdersByCurrentUser(authentication);
         model.addAttribute("orders", orders);
         return "myOrders";
+    }
+
+
+    @GetMapping("profile/myOrders/orderDetails/{id}")
+    public String viewOrderDetails(@PathVariable Long id, Model model) {
+        OrderItem order = orderService.findById(id);
+        model.addAttribute("order", order); // Pass the order to the vie
+        return "orderDetails";
     }
 }

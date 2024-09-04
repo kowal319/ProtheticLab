@@ -30,6 +30,9 @@ public class OrderItem {
     @Column(name = "description")
     private String description;
 
+    @Column(name = "phone_number")
+    private String phoneNumber;
+
 
     @Column(name = "pickup_date")
     private LocalDate pickupDate;

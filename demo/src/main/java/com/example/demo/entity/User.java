@@ -23,6 +23,8 @@ public class User {
     private String name;
     @Column(unique = true)
     private String email;
+    @Column(name = "phone_number")
+    private String phoneNumber;
     @Column(nullable = false)
     private String password;
     @Column(name = "address") // New field for opening hours

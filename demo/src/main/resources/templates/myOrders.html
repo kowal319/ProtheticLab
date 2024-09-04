@@ -24,10 +24,12 @@
             <table class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                    <th>Order ID</th>
+                    <th>Numer zamowienia</th>
                     <th>Opis</th>
-                    <th>data odbioru</th>
-                    <th>zzlecono</th>
+                    <th>Data odbioru</th>
+                    <th>Data zlecenia</th>
+                    <th>Akcje</th>
+
 
                     <th></th>
                 </tr>
@@ -38,6 +40,16 @@
                     <td th:text="${order.description}"></td>
                     <td th:text="${order.pickupDate}"></td>
                     <td th:text="${#temporals.format(order.created, 'yyyy-MM-dd HH:mm:ss')}"></td>
+                    <td>
+                        <!-- Delete Order Button -->
+                        <form th:action="@{/orders/delete/{id}(id=${order.id})}" method="post">
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                        <a th:href="@{/profile/myOrders/orderDetails/{id}(id=${order.id})}">
+                            <button type="button" class="btn btn-info">Info</button>
+                        </a>
+
+                    </td>
 
                 </tr>
                 </tbody>

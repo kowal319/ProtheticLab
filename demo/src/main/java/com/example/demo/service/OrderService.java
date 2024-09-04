@@ -16,6 +16,8 @@ public interface OrderService {
 void deleteOrder(Long id);
 
     List<OrderItem> findOrdersByCurrentUser(Authentication authentication);
+
+    OrderItem findById(Long id);
 }
 
 

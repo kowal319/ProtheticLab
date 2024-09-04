@@ -88,4 +88,11 @@ public class OrderServiceImpl implements OrderService {
         return user.getRoles().stream()
                 .anyMatch(role -> role.getName().equals(roleName));
     }
+
+
+    @Override
+    public OrderItem findById(Long id) {
+        Optional<OrderItem> orderOptional = orderRepository.findById(id);
+        return orderOptional.orElse(null);
+    }
 }
