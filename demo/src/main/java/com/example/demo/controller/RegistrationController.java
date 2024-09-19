@@ -25,13 +25,13 @@ public class RegistrationController {
     @GetMapping("/registration")
     public String showRegistrationForm(Model model) {
         model.addAttribute("registrationDto", new RegistrationDto());
-        return "registration";
+        return "freeUse/registration";
     }
 
     @PostMapping("/registration")
     public String registerUser(@ModelAttribute("registrationDto") @Valid RegistrationDto registrationDto, BindingResult result) {
         if (result.hasErrors()) {
-            return "registration";
+            return "freeUse/registration";
         }
 
         userService.registerUser(registrationDto);
@@ -41,7 +41,7 @@ public class RegistrationController {
 
     @GetMapping("/login")
     public String shoHome(){
-        return "login";
+        return "freeUse/login";
     }
 
     @PostMapping("/login")

@@ -42,7 +42,7 @@
                     <td th:text="${#temporals.format(order.created, 'yyyy-MM-dd HH:mm:ss')}"></td>
                     <td>
                         <!-- Delete Order Button -->
-                        <form th:action="@{/orders/delete/{id}(id=${order.id})}" method="post">
+                        <form th:action="@{/profile/myOrders/delete/{id}(id=${order.id})}" method="post">
                             <button type="submit" class="btn btn-danger">Delete</button>
                         </form>
                         <a th:href="@{/profile/myOrders/orderDetails/{id}(id=${order.id})}">

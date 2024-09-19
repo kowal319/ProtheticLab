@@ -41,6 +41,10 @@
                         <form th:action="@{/orders/delete/{id}(id=${order.id})}" method="post">
                             <button type="submit" class="btn btn-danger">Delete</button>
                         </form>
+                           <a th:href="@{/orders/orderInfoAdmin/{id}(id=${order.id})}">
+                            <button type="button" class="btn btn-info">Info</button>
+                        </a>
+
                     </td>
                 </tr>
                 </tbody>

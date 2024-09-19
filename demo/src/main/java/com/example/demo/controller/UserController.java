@@ -24,7 +24,7 @@ public class UserController {
         this.userService = userService;
     }
 
-
+//brak template
 @GetMapping("users")
     public String listOfUsers(Model model){
     List<User> users = userService.getAllUsers();
@@ -37,14 +37,14 @@ public class UserController {
         String loggedInUsername = authentication.getName();
         User currentUser = userService.findByName(loggedInUsername);
         model.addAttribute("userDetails", currentUser);
-        return "myprofile";
+        return "gabinet/myprofile";
     }
 
     @GetMapping("profile/edit/{id}")
     public String myProfileEditForm(@PathVariable Long id, Model model){
         User user = userService.findById(id);
         model.addAttribute("user", user);
-        return "myprofileEdit";
+        return "gabinet/myprofileEdit";
     }
 
     @PostMapping("profile/edit/{id}")

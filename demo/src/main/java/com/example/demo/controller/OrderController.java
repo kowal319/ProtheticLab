@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,14 +31,16 @@ public class OrderController {
     @GetMapping("orders")
     public String listOrders(Model model) {
         List<OrderItem> orders = orderService.getAllOrders();
+        Collections.reverse(orders);
         model.addAttribute("orders", orders);
-        return "orders-list"; // Thymeleaf template name
+
+        return "admin/orders-list"; // Thymeleaf template name
     }
 
     @GetMapping("/addOrder")
             public String addOrderForm(Model model) {
         model.addAttribute("order", new OrderItem()); // empty order object for the form
-        return "add-order";
+        return "freeUse/add-order";
     }
 
 
@@ -67,7 +70,7 @@ public class OrderController {
         // Add the order to the model
         model.addAttribute("order", order);
 
-        return "add-order-logged"; // name of your Thymeleaf template (orderForm.html)
+        return "gabinet/add-order-logged"; // name of your Thymeleaf template (orderForm.html)
     }
 
     @PostMapping("/profile/addOrder")
@@ -87,7 +90,13 @@ public class OrderController {
         return "redirect:/orders"; // Redirect back to the list after deletion
     }
 
-    // 4. Get an order by id and populate the form for editing
+    @PostMapping("profile/myOrders/delete/{id}")
+    public String deleteOrderByUser(@PathVariable Long id) {
+        orderService.deleteOrder(id);
+        return "redirect:/profile/myOrders"; // Redirect back to the list after deletion
+    }
+
+    // 4. Nie ma template do tego jeszcze nawet
     @GetMapping("/edit/{id}")
     public String editOrder(@PathVariable Long id, Model model) {
         Optional<OrderItem> orderItem = orderService.getOrderById(id);
@@ -110,8 +119,9 @@ public class OrderController {
     @GetMapping("profile/myOrders")
     public String viewMyOrders(Model model, Authentication authentication) {
         List<OrderItem> orders = orderService.findOrdersByCurrentUser(authentication);
+        Collections.reverse(orders);
         model.addAttribute("orders", orders);
-        return "myOrders";
+        return "gabinet/myOrders";
     }
 
 
@@ -119,6 +129,13 @@ public class OrderController {
     public String viewOrderDetails(@PathVariable Long id, Model model) {
         OrderItem order = orderService.findById(id);
         model.addAttribute("order", order); // Pass the order to the vie
-        return "orderDetails";
+        return "gabinet/orderDetails";
+    }
+
+    @GetMapping("orders/orderInfoAdmin/{id}")
+    public String viewOrderDetailsAdmin(@PathVariable Long id, Model model) {
+        OrderItem order = orderService.findById(id);
+        model.addAttribute("order", order); // Pass the order to the vie
+        return "admin/orderInfoAdmin";
     }
 }
