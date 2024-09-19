@@ -28,7 +28,7 @@ public class OrderController {
     }
 
     // 1. Render the order management page with the form and the list of orders
-    @GetMapping("orders")
+    @GetMapping("admin/orders")
     public String listOrders(Model model) {
         List<OrderItem> orders = orderService.getAllOrders();
         Collections.reverse(orders);

@@ -34,7 +34,9 @@ public class SecurityConfig {
                         .requestMatchers("/registration").permitAll()
                         .requestMatchers("/addOrder").permitAll()
                         .requestMatchers("/admin/**").hasAuthority("ADMIN")
-                        .requestMatchers("/employee/**").hasAuthority("GABINET")
+                        .requestMatchers("/profile/**").hasAuthority("GABINET")
+
+
 
                         .anyRequest().authenticated()
                 ).httpBasic(Customizer.withDefaults())

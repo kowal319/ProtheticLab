@@ -49,10 +49,5 @@ public class RegistrationController {
         // Your login logic here
         return "redirect:/addOrder"; // Redirect to the products page after successful login
     }
-
-
-
-
-
 }
 
