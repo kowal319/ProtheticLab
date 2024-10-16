@@ -18,10 +18,7 @@
                 <tr>
                     <th>ID</th>
                     <th>Nazwa gabinetu</th>
-                    <th>Email</th>
                     <th>Numer Telefonu</th>
-                    <th>Adres</th>
-                    <th>Godziny otwarcia</th>
                     <th>Operacje</th>
                 </tr>
                 </thead>
@@ -29,18 +26,15 @@
                 <tr th:each="user : ${users}">
                     <td th:text="${user.id}"></td>
                     <td th:text="${user.name}"></td>
-                    <td th:text="${user.email}"></td>
                     <td th:text="${user.phoneNumber}"></td>
-                    <td th:text="${user.address}"></td>
-                    <td th:text="${user.openingHours}"></td>
                     <td>
                         <!-- Delete Order Button -->
                         <form th:action="@{/users/delete/{id}(id=${user.id})}" method="post">
                             <button type="submit" class="btn btn-danger">Delete</button>
                         </form>
-<!--                        <a th:href="@{/orders/orderInfoAdmin/{id}(id=${order.id})}">-->
-<!--                            <button type="button" class="btn btn-info">Info</button>-->
-<!--                        </a>-->
+                        <a th:href="@{/users/userInfoAdmin/{id}(id=${user.id})}">
+                            <button type="button" class="btn btn-info">Info</button>
+                        </a>
 
                     </td>
                 </tr>

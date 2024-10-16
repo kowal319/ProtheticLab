@@ -10,6 +10,9 @@ import com.example.demo.service.UserService;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -130,6 +133,7 @@ return userRepository.save(existingUser);
         } else {
             return "User with ID " + id + " not found.";
         }    }
+
 
 
 }

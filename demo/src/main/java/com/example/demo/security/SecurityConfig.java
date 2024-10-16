@@ -35,9 +35,7 @@ public class SecurityConfig {
                         .requestMatchers("/addOrder").permitAll()
                         .requestMatchers("/admin/**").hasAuthority("ADMIN")
                         .requestMatchers("/profile/**").hasAuthority("GABINET")
-
-
-
+                        .requestMatchers("/profile/**").hasAuthority("ADMIN")
                         .anyRequest().authenticated()
                 ).httpBasic(Customizer.withDefaults())
                 .formLogin((form) -> form

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class UserController {
@@ -35,6 +36,12 @@ public class UserController {
     public String deleteUser(@PathVariable Long id) {
         userService.deleteUser(id);
         return "redirect:/users"; // Redirect back to the list after deletion
+    }
+    @GetMapping("users/userInfoAdmin/{id}")
+    public String viewUserDetailsAdmin(@PathVariable Long id, Model model) {
+       User user = userService.findById(id);
+        model.addAttribute("user", user);
+        return "admin/userInfoAdmin";
     }
 
     @GetMapping("profile")
