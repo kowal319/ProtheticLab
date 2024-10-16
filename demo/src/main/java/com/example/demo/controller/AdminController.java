@@ -23,4 +23,7 @@ public class AdminController {
     public String shoHome(){
         return "admin/homeAdmin";
     }
+
+
+
 }

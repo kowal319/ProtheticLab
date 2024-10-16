@@ -113,4 +113,23 @@ return userRepository.save(existingUser);
            return null;
        }}
 
+    @Override
+    public String deleteUser(Long id) {
+        Optional<User> optionalUser = userRepository.findById(id);
+        if (optionalUser.isPresent()) {
+            User user = optionalUser.get();
+
+            // Remove roles associated with the user
+            user.getRoles().clear();
+            userRepository.save(user);
+
+            // Delete the user
+            userRepository.deleteById(id);
+
+            return "User with ID " + id + " has been deleted.";
+        } else {
+            return "User with ID " + id + " not found.";
+        }    }
+
+
 }

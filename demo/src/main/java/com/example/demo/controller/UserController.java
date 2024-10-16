@@ -24,12 +24,17 @@ public class UserController {
         this.userService = userService;
     }
 
-//brak template
 @GetMapping("users")
     public String listOfUsers(Model model){
     List<User> users = userService.getAllUsers();
     model.addAttribute("users", users);
-    return "listOfUsers";
+    return "admin/users-list";
+    }
+
+    @PostMapping("users/delete/{id}")
+    public String deleteUser(@PathVariable Long id) {
+        userService.deleteUser(id);
+        return "redirect:/users"; // Redirect back to the list after deletion
     }
 
     @GetMapping("profile")
