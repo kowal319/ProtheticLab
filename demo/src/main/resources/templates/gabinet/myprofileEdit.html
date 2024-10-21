@@ -10,9 +10,13 @@
 
     </style>
 </head>
+<div th:replace="gabinet/navbar ::header"></div>
 
 <body>
+<div th:replace="gabinet/navbar ::navbar"></div>
+<br />
 <h1>Tutaj zmienisz swoje dane i uzupełnisz profil</h1>
+
 <form th:action="@{/profile/edit/{id}(id=${user.id})}" method="post">
   <div class="form-group">
     <label for="name">Nazwa gabinetu</label>
@@ -35,8 +39,8 @@
     <input type="text" class="form-control" id="openingHours" name="openingHours" th:value="${user.openingHours}" />
   </div>
 
-  <button type="submit" class="btn btn-primary">Update</button>
-  <a th:href="@{/profile}" class="btn btn-secondary">Cancel</a>
+  <button type="submit" class="btn btn-primary">Zaktualizuj</button>
+  <a th:href="@{/profile}" class="btn btn-secondary">Wróć</a>
 </form>
 </body>
 

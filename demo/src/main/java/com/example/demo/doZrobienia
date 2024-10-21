@@ -1,8 +1,14 @@
 
+Jest :
+CRUD na zamowieniach przez gabinet ( poza edcja )
+CRUD na swoim rpofilu dla gabinetow
+CRUD na uzytkownikach przez Admina ( poza edycja )
 
-
-13. Zarzadzanie uzytkownikami
-
+Do zrobienia :
+1. Opcje wylogowania sie - zrobione w pliku homeadmin html, trzeba dodac wszedzie
+2. Zmiana hasla
+3. Edycja gabinetu z poziomu admina
+4.
 
 
 

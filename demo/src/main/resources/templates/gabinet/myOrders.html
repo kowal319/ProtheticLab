@@ -10,17 +10,18 @@
     <style>
     </style>
 </head>
+<div th:replace="gabinet/navbar ::header"></div>
 
 <body>
+<div th:replace="gabinet/navbar ::navbar"></div>
+<br />
 
 
 <!-- User Details Card -->
 <div class="container">
     <div class="card-container">
         <div class="card">
-            <a th:href="@{/profile}" class="btn btn-secondary">Moj profil</a>
-
-            <h5>Order History</h5>
+            <h5>Zamówienia</h5>
             <table class="table table-bordered table-striped">
                 <thead>
                 <tr>
@@ -29,8 +30,6 @@
                     <th>Data odbioru</th>
                     <th>Data zlecenia</th>
                     <th>Akcje</th>
-
-
                     <th></th>
                 </tr>
                 </thead>
@@ -43,10 +42,10 @@
                     <td>
                         <!-- Delete Order Button -->
                         <form th:action="@{/profile/myOrders/delete/{id}(id=${order.id})}" method="post">
-                            <button type="submit" class="btn btn-danger">Delete</button>
+                            <button type="submit" class="btn btn-danger">Usuń</button>
                         </form>
                         <a th:href="@{/profile/myOrders/orderDetails/{id}(id=${order.id})}">
-                            <button type="button" class="btn btn-info">Info</button>
+                            <button type="button" class="btn btn-info">Więcej informacji</button>
                         </a>
 
                     </td>

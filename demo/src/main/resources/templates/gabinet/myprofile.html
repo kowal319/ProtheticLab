@@ -10,15 +10,16 @@
   <style>
     </style>
 </head>
-
+<div th:replace="gabinet/navbar ::header"></div>
 
 <body>
+<div th:replace="gabinet/navbar ::navbar"></div>
 <br />
 
 <!-- User Details Card -->
-<div class="card-container">
-  <div class="card">
-    <div class="card-body">
+<div class="container">
+  <div class="card-container">
+    <div class="card">
       <h5>User</h5>
       <div class="user-details">
         <p>Nazwa Gabinetu: <span th:text="${userDetails.name}"></span></p>
