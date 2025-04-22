@@ -65,4 +65,20 @@ public class UserController {
      return "redirect:/profile";
     }
 
+    @GetMapping("admin/users/edit/{id}")
+    public String adminGabinetEditForm(@PathVariable Long id, Model model){
+        User user = userService.findById(id);
+        model.addAttribute("user", user);
+        return "admin/edit-gabinet";
+    }
+
+    @PostMapping("admin/users/edit/{id}")
+    public String editGabinet(@PathVariable Long id, @ModelAttribute User updatedUser){
+        userService.updateUser(id, updatedUser);
+        return "redirect:/admin/users";
+    }
+
+
+
+
 }

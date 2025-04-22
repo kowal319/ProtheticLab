@@ -62,7 +62,7 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public OrderItem updateOrder(Long id, OrderItem updatedOrder) {
         return orderRepository.findById(id).map(order -> {
-            order.setDescription(updatedOrder.getDescription());
+            order.setWorkType(updatedOrder.getWorkType());
             return orderRepository.save(order);
         }).orElseThrow(() -> new RuntimeException("Order not found"));
     }
@@ -95,5 +95,10 @@ public class OrderServiceImpl implements OrderService {
     public OrderItem findById(Long id) {
         Optional<OrderItem> orderOptional = orderRepository.findById(id);
         return orderOptional.orElse(null);
+    }
+
+    @Override
+    public List<OrderItem> findByUserId(Long id) {
+        return orderRepository.findByUserId(id);
     }
 }

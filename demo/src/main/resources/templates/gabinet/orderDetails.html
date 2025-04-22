@@ -22,11 +22,13 @@
       <p><strong>Nazwa Gabinetu:</strong> <span th:text="${order.name}"></span></p>
       <p><strong>Adres</strong> <span th:text="${order.name}"></span></p>
       <p><strong>Numer Kontaktowy</strong> <span th:text="${order.phoneNumber}"></span></p>
+      <p><strong>Typ Pracy:</strong> <span th:text="${order.workType}"></span></p>
       <p><strong>Opis:</strong> <span th:text="${order.description}"></span></p>
       <p><strong>Data Odbioru:</strong> <span th:text="${order.pickupDate}"></span></p>
       <p><strong>Godziny Otwarcia:</strong> <span th:text="${order.openingHours}"></span></p>
-      <p><strong>Data zlozenia zamowienia :</strong> <span th:text="${order.created}"></span></p>
-    </div>
+      <p><strong><i class="fas fa-calendar-plus"></i> Data Złożenia Zamówienia:</strong>
+        <span th:text="${#temporals.format(order.created, 'dd-MM-yyyy HH:mm')}"></span>
+      </p>    </div>
     <div class="card-footer">
       <a href="#" th:href="@{/profile/myOrders}" class="btn btn-primary">Wróć</a>
     </div>

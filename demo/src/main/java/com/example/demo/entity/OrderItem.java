@@ -30,6 +30,9 @@ public class OrderItem {
     @Column(name = "description")
     private String description;
 
+    @Column(name = "work_type")
+    private String workType;
+
     @Column(name = "phone_number")
     private String phoneNumber;
 

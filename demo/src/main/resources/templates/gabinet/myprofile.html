@@ -1,50 +1,88 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>User Profile</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-        crossorigin="anonymous">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
   <style>
-    </style>
+    body {
+      background-color: #f8f9fa;
+    }
+
+    .card-container {
+      max-width: 700px;
+      margin: 40px auto;
+    }
+
+    .card {
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    .user-details p {
+      font-size: 1rem;
+      margin-bottom: 8px;
+    }
+
+    .user-details-btns {
+      margin-top: 20px;
+    }
+
+    .user-details-btns a {
+      margin-right: 10px;
+    }
+
+    .btn-primary, .btn-secondary {
+      border-radius: 8px;
+    }
+  </style>
 </head>
-<div th:replace="gabinet/navbar ::header"></div>
 
 <body>
+<!-- Header -->
+<div th:replace="gabinet/navbar ::header"></div>
 <div th:replace="gabinet/navbar ::navbar"></div>
-<br />
 
 <!-- User Details Card -->
 <div class="container">
   <div class="card-container">
     <div class="card">
-      <h5>User</h5>
+      <h3 class="mb-4 text-center text-primary"><i class="fa fa-user-circle"></i> Profile</h3>
+
       <div class="user-details">
-        <p>Nazwa Gabinetu: <span th:text="${userDetails.name}"></span></p>
-        <p>Email: <span th:text="${userDetails.email}"></span></p>
-        <p>Adres: <span th:text="${userDetails.address}"></span></p>
-        <p>Godziny Otwarcia: <span th:text="${userDetails.openingHours}"></span></p>
-
+        <p><strong>Nazwa Gabinetu:</strong> <span th:text="${userDetails.name}"></span></p>
+        <p><strong>Email:</strong> <span th:text="${userDetails.email}"></span></p>
+        <p><strong>Adres:</strong> <span th:text="${userDetails.address}"></span></p>
+        <p><strong>Godziny Otwarcia:</strong> <span th:text="${userDetails.openingHours}"></span></p>
       </div>
-      <div class="user-details-btns">
-        <a th:href="@{profile/edit/{id}(id=${userDetails.id})}" class="btn btn-primary">Edytuj/Uzupełnij dane</a>
-<!--        <a href="#" class="btn btn-primary" th:href="@{/users/changePassword/{id}(id=${userDetails.id})}">Change Password</a>-->
-        <!--                <a th:href="@{/users/profile/userCardDetails}" class="btn btn-primary">Credit Card Details</a>-->
-          <a th:href="@{/profile/addOrder}" class="btn btn-secondary">Złóz zamówienie</a>
-        <a th:href="@{/profile/myOrders}" class="btn btn-secondary">Moje zamówienia</a>
 
+      <hr>
 
-
-
-
+      <div class="user-details-btns d-flex justify-content-center">
+        <a th:href="@{/profile/edit/{id}(id=${userDetails.id})}" class="btn btn-primary">
+          <i class="fas fa-edit"></i> Edytuj/Uzupełnij Dane
+        </a>
+        <a th:href="@{/profile/addOrder}" class="btn btn-secondary">
+          <i class="fas fa-plus-circle"></i> Złóż Zamówienie
+        </a>
+        <a th:href="@{/profile/myOrders}" class="btn btn-secondary">
+          <i class="fas fa-list"></i> Moje Zamówienia
+        </a>
       </div>
     </div>
   </div>
 </div>
-<!-- Add your scripts and other body elements here -->
+
+<!-- Bootstrap & FontAwesome Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
 
 </body>
-
 </html>

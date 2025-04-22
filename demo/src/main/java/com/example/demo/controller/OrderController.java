@@ -132,10 +132,18 @@ public class OrderController {
         return "gabinet/orderDetails";
     }
 
-    @GetMapping("orders/orderInfoAdmin/{id}")
+    @GetMapping("admin/orders/orderInfoAdmin/{id}")
     public String viewOrderDetailsAdmin(@PathVariable Long id, Model model) {
         OrderItem order = orderService.findById(id);
         model.addAttribute("order", order); // Pass the order to the vie
         return "admin/orderInfoAdmin";
+    }
+
+    @GetMapping("admin/profile/{id}/orders")
+    public String viewProfileOrders(@PathVariable Long id, Model model) {
+        List<OrderItem> orders = orderService.findByUserId(id);
+        Collections.reverse(orders);
+        model.addAttribute("orders", orders);
+        return "admin/user-orders";
     }
 }

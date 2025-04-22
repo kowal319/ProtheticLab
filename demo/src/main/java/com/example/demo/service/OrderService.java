@@ -13,11 +13,13 @@ public interface OrderService {
         List<OrderItem> getAllOrders();
 
         OrderItem updateOrder(Long id, OrderItem updatedOrder);
-void deleteOrder(Long id);
+        void deleteOrder(Long id);
 
-    List<OrderItem> findOrdersByCurrentUser(Authentication authentication);
+        List<OrderItem> findOrdersByCurrentUser(Authentication authentication);
 
-    OrderItem findById(Long id);
+        OrderItem findById(Long id);
+
+        List<OrderItem> findByUserId(Long id);
 }
 
 
